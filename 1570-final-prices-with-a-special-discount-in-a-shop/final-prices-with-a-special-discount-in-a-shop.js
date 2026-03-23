@@ -3,15 +3,14 @@
  * @return {number[]}
  */
 var finalPrices = function(prices) {
-    let n = prices.length;
-    let ans = [...prices];
-    for(let i=0;i<n;i++) {
-        for(let j=i+1;j<n;j++){
-            if(prices[j] <= prices[i] ){
-                ans[i] =prices[i] -  prices[j];
-                break;
-            }
+    let result = [...prices];
+    let stack = [];
+    for( let i=0;i<prices.length;i++){
+        while(stack.length>0 && prices[stack[stack.length-1]] >= prices[i]) {
+            let index = stack.pop();
+            result[index] = prices[index] - prices[i]
         }
+        stack.push(i);
     }
-    return ans;
+    return result;
 };
