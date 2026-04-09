@@ -6,6 +6,12 @@ var dailyTemperatures = function(temperatures) {
     let n = temperatures.length;
     let ans = new Array(n).fill(0);
     let stack = [];
+    //stack = [,6 , ,]
+    //ans = [1, 1, 4, 2, 1, 1, 0, 0]
+    //      73,74,75,71,69, 72,76,=73
+    //i = 7
+    //prev = 2
+    //
     for(let i=0;i<n;i++) {
         while(stack.length && temperatures[i] > temperatures[stack[stack.length-1]] ){
             let prev = stack.pop();
