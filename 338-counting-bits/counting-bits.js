@@ -3,21 +3,31 @@
  * @return {number[]}
  */
 var countBits = function(n) {
-    let ans = []
-    for(let i=0;i<=n;i++) {
-        ans.push(countSetBit(i))
+    // let ans = []
+    // for(let i=0;i<=n;i++) {
+    //     ans.push(countSetBit(i))
+    // }
+    
+    // return ans;
+    let ans = new Array(n+1).fill(0);
+    let offSet = 1;
+    for(let i=1;i<=n;i++) {
+        if (offSet*2 === i){
+            offSet = i;
+        }
+        ans[i] = 1 + ans[i-offSet]
     }
     
     return ans;
 };
 
-function countSetBit(num) {
-        let count = 0;
-        while(num){
-            if(num&1){
-                count++
-            }
-            num>>=1;
-        }
-        return count;
-    }
+// function countSetBit(num) {
+//         let count = 0;
+//         while(num){
+//             if(num&1){
+//                 count++
+//             }
+//             num>>=1;
+//         }
+//         return count;
+// }
