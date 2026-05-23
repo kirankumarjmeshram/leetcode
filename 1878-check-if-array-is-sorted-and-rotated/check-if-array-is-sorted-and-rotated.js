@@ -10,7 +10,7 @@ var check = function(nums) {
     for(let i=0;i<n;i++) {
         if(nums[i]>nums[(i+1)%n]){
             if(fault) return false;
-            fault += 1;
+            fault = 1;
         }
         
     }
