@@ -8,9 +8,7 @@ var maximumGap = function(nums) {
     let gap =0;
     nums = nums.sort((a,b) => a-b);
     for(let i=1;i<n;i++) {
-        if(nums[i] -nums[i-1] > gap){
-            gap = nums[i] -nums[i-1]
-        }
+        gap = Math.max(gap,nums[i] -nums[i-1]);
     }
     return gap;
 };
