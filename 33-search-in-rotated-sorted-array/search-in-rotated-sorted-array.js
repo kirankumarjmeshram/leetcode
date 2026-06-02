@@ -24,7 +24,6 @@ var search = function(nums, target) {
             }else{
                 h=m-1
             }
-            
         }
     }
     return -1;
