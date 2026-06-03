@@ -13,7 +13,8 @@ var search = function(nums, target) {
             return true;
         }if(nums[l]===nums[m]){
             l++;
-            continue;
+            //If the left boundary equals the middle, we can't know which side is sorted, so discard one duplicate and continue.
+            // continue;
         }else if(nums[l]<=nums[m]){
             if((target<nums[m])&& target>=nums[l]){
                  h= m-1;
