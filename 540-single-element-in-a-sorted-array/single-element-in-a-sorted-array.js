@@ -17,5 +17,5 @@ var singleNonDuplicate = function(nums) {
             high=mid;
         }
     }
-    return nums[low];
+    return nums[high];
 };
