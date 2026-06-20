@@ -5,8 +5,8 @@
 var smallestGoodBase = function(n) {
     n = BigInt(n);
     
-    // let maxSize = n.toString(2).length;
-    let maxSize = 60; // as n ranges 10^18 ~= 2^60 so high base // ie max exponent eg k^m
+    let maxSize = n.toString(2).length;
+    // let maxSize = 60; // as n ranges 10^18 ~= 2^60 so high base // ie max exponent eg k^m
     let minSize = 2 // 
     let maxBase = n - 1n;
     let minBase = 2n;
