@@ -3,27 +3,16 @@
  * @return {number[][]}
  */
 var subsets = function(nums) {
-    let n = nums.length;
-    // let subSets = [[]];
-    // for (let num of nums) {
-    //     let length = subSets.length;
-    //     for(let j = 0;j<length;j++){
-    //         let subSet = subSets[j];
-    //         subSets.push([...subSet, num])
-    //         // subSets.push(subSet.concat(num))
-    //     }
-    // }
-    // using bit masking
-    let subSets = []
-    for(let i=0;i< 1<<n;i++){
-        let sub = [];
-        for(let j = 0; j<n;j++) {
-            if(i & (1<<j)){
-                sub.push(nums[j])
-            }
-        }
-        subSets.push(sub)
-    }
-
+    let subSets = [];
+    Helper(nums,subSets,[],0);
     return subSets;
 };
+
+function Helper(nums,subSets,current,index) {
+    if(index===nums.length) {
+        subSets.push(current);
+        return;
+    }
+    Helper(nums,subSets,current,index+1);
+    Helper(nums,subSets,[...current, nums[index]],index+1)
+}
