@@ -14,36 +14,21 @@
 var kthLargestPerfectSubtree = function(root, k) {
     let sizes = [];
     function dfs (node) {
-        if(node === null){
-            return {
-                perfect : true,
-                height :0,
-                size:0
-            }
-        }
+        if(node === null) return 0
+
         let left = dfs(node.left);
         let right = dfs(node.right);
 
-        if(left.perfect && right.perfect && left.height === right.height) {
+        if(left === right) {
             let size = 1 + left.size + right.size;
             let height =1 + left.height;
-            sizes.push(size);
+            sizes.push(left+right+1);
 
-            return {
-                perfect:true,
-                height: height,
-                size:size
-            }
+            return left+right+1
         };
-        return {
-            perfect : false,
-            height :0,
-            size:0           
-        };
+        return -1;
     }
     dfs(root);
     sizes.sort((a,b) => b-a);
-    return k<= sizes.length?sizes[k-1]:-1;
-
-    
+    return k<= sizes.length?sizes[k-1]:-1;    
 };
