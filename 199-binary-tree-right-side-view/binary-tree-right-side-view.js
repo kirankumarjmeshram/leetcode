@@ -15,10 +15,10 @@ var rightSideView = function(root) {
     let ans = [];
     let queue = [root];
     while(queue.length > 0) {
-        let n = queue.length;
-        for(let i=0; i< n; i++) {
+        let level = queue.length;
+        for(let i=0; i< level; i++) {
             let curr = queue.shift();
-            if(i=== n-1) ans.push(curr.val);
+            if(i=== level-1) ans.push(curr.val);
             if(curr.left) queue.push(curr.left);
             if(curr.right) queue.push(curr.right);
         }
