@@ -6,7 +6,7 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     let m = obstacleGrid.length;
     let n = obstacleGrid[0].length;
     let dp = Array.from({length:m},()=>new Array(n).fill(0));
-    let flag = false
+    let flag = false //flag remembers whether an obstacle has already blocked the path, so every cell beyond that obstacle in the first row/column gets 0
     for(let i=0;i<m;i++) {
         if(flag || obstacleGrid[i][0]){
             flag = true
