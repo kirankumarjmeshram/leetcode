@@ -4,11 +4,47 @@
  * @return {number}
  */
 var prefixCount = function(words, pref) {
-    let count = 0;
+    let trie = new Trie();
+    
     for(let word of words) {
-        if(word.startsWith(pref)){
-            count++;
+        trie.insert(word);
+    }
+
+    return trie.countPrefix(pref);
+};
+
+class TrieNode{
+    constructor() {
+        this.children = {};
+        this.count =0;
+    }
+}
+class Trie{
+    constructor(){
+        this.root = new TrieNode();
+    }
+
+    insert(word) {
+        let node = this.root;
+        
+        for(let char of word) {
+            if(!node.children[char]){
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+            node.count++;
         }
     }
-    return count;
-};
+
+    countPrefix(pref) {
+        let node = this.root;
+
+        for(let char of pref) {
+            if(!node.children[char]){
+                return 0;
+            }
+            node = node.children[char];
+        }
+        return node.count;
+    }
+}
