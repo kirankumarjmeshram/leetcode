@@ -5,11 +5,7 @@
 var singleNumber = function(nums) {
     let map = {};
     for(let num of nums) {
-        if (!map[num]){
-            map[num] = 1;
-        }else{
-             map[num]++;
-        }
+        map[num] = (map[num] || 0) +1
     }
     for(let e of Object.keys(map)){
         if (map[e] === 1) return +e;
