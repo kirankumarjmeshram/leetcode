@@ -27,6 +27,7 @@ var solution = function(isBadVersion) {
                 low = mid+1
             }
         }
+        
         return low;
     };
 };
