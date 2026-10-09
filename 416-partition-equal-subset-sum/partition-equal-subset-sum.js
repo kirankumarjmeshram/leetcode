@@ -10,6 +10,8 @@ var canPartition = function(nums) {
     let target = total/2
     let dp = new Array(target+1).fill(false);
     dp[0] = true;
+    // [1,5,11,5]
+    // [T,T,F,F,F,T,T,F,F,F,F,T]
     for(let num of nums){
         for(let i=target;i>=num;i--){
             if(dp[i-num]){
