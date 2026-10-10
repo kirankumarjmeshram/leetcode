@@ -3,25 +3,15 @@
  * @return {number}
  */
 var maxProduct = function(nums) {
-    let n = nums.length;
-    let firstMax = 0, secondMax = 0;
-    // for (let i=0;i<n;i++) {
-    //     if(nums[i] > secondMax){
-    //         secondMax = nums[i]
-    //     }
-    //     if(secondMax> firstMax){
-    //         let temp = firstMax;
-    //         firstMax =secondMax;
-    //         secondMax = temp
-    //     }
-    // }
-    for(let num of nums) {
-        if(num > firstMax){
-            secondMax = firstMax;
-            firstMax = num;
-        }else if(num > secondMax){
-            secondMax = num;
+    let maxProduct =  0;
+
+    for(let i=0;i<nums.length;i++) {
+        for(let j=i+1;j<nums.length;j++) {
+                let product = (nums[i] - 1) * (nums[j] - 1);
+                if( product > maxProduct){
+                    maxProduct = product;
+                }
+            }
         }
-    }
-    return (firstMax-1)*(secondMax-1);
-};
+    return maxProduct;
+}
